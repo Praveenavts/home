@@ -1,10 +1,9 @@
 from django.db import models
 
-
 class HomeContent(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
-    image = models.ImageField(upload_to='home_content/')
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to='home_content/', blank=True, null=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -14,4 +13,4 @@ class HomeContent(models.Model):
         verbose_name_plural = 'Home Contents'
 
     def __str__(self):
-        return self.title
+        return self.title or "HomeContent"
